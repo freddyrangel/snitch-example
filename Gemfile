@@ -16,6 +16,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'octokit'
   gem 'spring'
+  gem 'thor'
   gem 'web-console', '~> 2.0.0.beta2'
 end
 

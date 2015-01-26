@@ -17,4 +17,13 @@ RSpec.describe User do
       expect(true).to eq false
     end
   end
+
+  describe '.some_new_method' do
+    it 'is pending'
+
+    context 'when pending' do
+      it 'should be reported to Github as an issue'
+      it 'should also be reported to GH'
+    end
+  end
 end
