@@ -27,8 +27,6 @@ RSpec.configure do |config|
     pendings = examples.pending_examples
 
     # Filter examples that do not have a corresponding GH issue
-    thor = Thor::Shell::Basic.new
-
     reportable_examples = []
     pendings.each do |example|
       if example.pending? && issue_titles.exclude?(example.full_description)
@@ -37,6 +35,7 @@ RSpec.configure do |config|
     end
 
     # Ask user for confirmation
+    thor = Thor::Shell::Basic.new
     question = "#{pluralize(reportable_examples.size, 'issue')} to report. Snitch to GitHub? (y/n):"
 
     if reportable_examples.any? && thor.yes?(question)
@@ -47,10 +46,10 @@ RSpec.configure do |config|
         # Create GitHub issue!
         github.create_issue(repo, title, body)
 
-        # TODO: Reopen if exists, but is closed.
+        # TODO: Reopen issue if one exists, but is closed.
       end
 
-      puts "#{pluralize(reportable_examples.size, 'issue')} created for #{repo}."
+      puts "You dirty rat."
     end
   end
 end
