@@ -17,6 +17,9 @@ RSpec.configure do |config|
     github = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
     issues = github.list_issues('freddyrangel/snitch-example')
     issue_titles = issues.map(&:title)
-    puts issue_titles
+
+    #get pending examples
+    examples = config.instance_variable_get(:@reporter)
+    pending examples = examples.pending_examples
   end
 end
